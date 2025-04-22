@@ -16,11 +16,11 @@ const FilterOrigin = (props: FilterOriginProps) => {
   return (
     <div className="my-5">
       <p className="mb-3 font-bold">Origen</p>
-      {loading && result === null ? (
+      {loading || !result ? (
         <p>Loading...</p>
       ) : (
         <RadioGroup onValueChange={(value) => setFilterOrigin(value)}>
-          {result.schema.attributes.origin.enum.map((origin) => (
+          {result.schema.attributes.origin.enum.map((origin: string) => (
             <div key={origin} className="flex items-center space-x-2">
               <RadioGroupItem value={origin} id={origin} />
               <Label htmlFor={origin}>{origin}</Label>
