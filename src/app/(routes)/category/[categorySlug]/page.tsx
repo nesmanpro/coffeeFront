@@ -12,7 +12,9 @@ import { useState } from "react";
 
 export default function Page() {
   const { categorySlug } = useParams();
-  const { result, loading }: ResponseType = useGetCategoryProds(categorySlug);
+
+  const slug = typeof categorySlug === "string" ? categorySlug : "";
+  const { result, loading }: ResponseType = useGetCategoryProds(slug);
 
   const [filterOrigin, setFilterOrigin] = useState("");
 
@@ -29,7 +31,7 @@ export default function Page() {
     <div className="max-w-6xl min-w-full py-4 mx-auto sm:py-16 px-6 sm:px-24">
       {result !== null && !loading && (
         <h1 className="text-3xl font-medium">
-          Café {result[0].category.categoryName}
+          Café {result[0]?.category.categoryName || "Prod"}
         </h1>
       )}
       <Separator />
