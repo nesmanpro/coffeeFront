@@ -3,7 +3,6 @@ import { Separator } from "@/components/ui/separator";
 import useCart from "@/hooks/useCart";
 import useFavorites from "@/hooks/useFavorites";
 import formatPrice from "@/lib/formatPrice";
-import isFavorite from "@/lib/isFavorite";
 import { productType } from "@/types/product";
 import { Heart } from "lucide-react";
 
@@ -20,7 +19,11 @@ const InfoProduct = (props: InfoProductProps) => {
   const isFav = items.some((item) => item.id === id);
 
   const handleFav = () => {
-    isFav ? removeFavorite(id) : addFavorite(product);
+    if (isFav) {
+      removeFavorite(id);
+    } else {
+      addFavorite(product);
+    }
   };
 
   return (
