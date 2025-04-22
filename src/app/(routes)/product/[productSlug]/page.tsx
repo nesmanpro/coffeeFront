@@ -6,9 +6,8 @@ import { useParams } from "next/navigation";
 import { SkeletonProduct } from "./components/SkeletonProduct";
 import CarouselProduct from "./components/CarouselProduct";
 import InfoProduct from "./components/InfoProduct";
-import isFavorite from "@/lib/isFavorite";
 
-export default function page() {
+export default function Page() {
   const { productSlug } = useParams();
 
   const { result }: ResponseType = useGetProductBySlug(productSlug);

@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export const ChooseCategory = () => {
   const url = process.env.NEXT_PUBLIC_BACKEND_URL;
-  const { result, error, loading }: ResponseType = useGetCategory();
+  const { result, loading }: ResponseType = useGetCategory();
 
   return (
     <div className="flex flex-col items-center max-w-6xl py-4 mx-auto sm:py-16 sm:px-24 ">

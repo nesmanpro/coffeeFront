@@ -14,7 +14,7 @@ interface CartItemsProps {
 const CartItem = (props: CartItemsProps) => {
   const { product } = props;
   const router = useRouter();
-  const { removeItem, removeAll } = useCart();
+  const { removeItem } = useCart();
   return (
     <li className="flex justify-between w-full py-6 border-b gap-3">
       <div

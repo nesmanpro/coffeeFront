@@ -9,7 +9,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { makePaymentRequest } from "@/api/payment";
 import { formatOrderItems } from "@/lib/formatOrderItems";
 
-export default function page() {
+export default function Page() {
   const { items, removeAll } = useCart();
 
   const prices = items.map((prod) => prod.price);

@@ -14,10 +14,16 @@ export default function useGetProductField() {
         const { data } = await res.json();
         setResult(data);
         setLoading(false);
-      } catch (err: any) {
-        setError(err);
-        setLoading(false);
-        throw new Error(err);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+          setLoading(false);
+          throw err;
+        } else {
+          setError("An unknown error occurred");
+          setLoading(false);
+          throw new Error("An unknown error occurred");
+        }
       }
     })();
   }, [url]);
