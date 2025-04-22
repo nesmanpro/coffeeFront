@@ -8,7 +8,7 @@ import CarouselProduct from "./components/CarouselProduct";
 import InfoProduct from "./components/InfoProduct";
 
 export default function Page() {
-  const { productSlug } = useParams();
+  const { productSlug } = useParams() as { productSlug: string };
 
   const { result }: ResponseType = useGetProductBySlug(productSlug);
 
