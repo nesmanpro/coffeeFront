@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export type ResponseType = {
-    result: unknown,
+    result: any,
     loading: boolean,
     error: string,
 }
