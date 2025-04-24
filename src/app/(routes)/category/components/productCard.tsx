@@ -19,7 +19,6 @@ type ProductCardProps = {
 
 const ProductCard = (props: ProductCardProps) => {
   const router = useRouter();
-  const url = process.env.NEXT_PUBLIC_BACKEND_URL;
   const { product } = props;
   const { origin, image, slug, taste, price, productName } = product;
 
