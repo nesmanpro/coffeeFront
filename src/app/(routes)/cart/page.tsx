@@ -27,8 +27,6 @@ export default function Page() {
       });
       await stripe?.redirectToCheckout({
         sessionId: res.data.stripeSession.id,
-        successUrl: `${window.location.origin}/success`,
-        cancelUrl: `${window.location.origin}/cart`,
       });
     } catch (error) {
       console.log(error);
