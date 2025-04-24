@@ -46,7 +46,7 @@ export const FeaturedProds = () => {
           {result !== null &&
             result.map((prod: productType) => {
               const { id, slug, taste, origin, productName, image } = prod;
-              const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}${image[0].url}`;
+              const url = image[0].url;
 
               return (
                 <CarouselItem

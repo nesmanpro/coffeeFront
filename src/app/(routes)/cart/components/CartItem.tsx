@@ -2,7 +2,6 @@
 import CustomBadge from "@/components/atoms/Badge";
 import useCart from "@/hooks/useCart";
 import formatPrice from "@/lib/formatPrice";
-import formatURL from "@/lib/formatURL";
 import { cn } from "@/lib/utils";
 import { productType } from "@/types/product";
 import { X } from "lucide-react";
@@ -23,7 +22,7 @@ const CartItem = (props: CartItemsProps) => {
       >
         <img
           className="w-14 h-14 overflow-hidden rounded-sm sm:w-auto sm:h-24"
-          src={formatURL(product.image[0].url)}
+          src={product.image[0].url}
           alt={product.productName}
         />
       </div>

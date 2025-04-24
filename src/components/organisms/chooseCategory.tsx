@@ -7,7 +7,6 @@ import { ResponseType } from "@/types/response";
 import Link from "next/link";
 
 export const ChooseCategory = () => {
-  const url = process.env.NEXT_PUBLIC_BACKEND_URL;
   const { result, loading }: ResponseType = useGetCategory();
 
   return (
@@ -30,7 +29,7 @@ export const ChooseCategory = () => {
               >
                 <img
                   className="max-h-[220px] transition duration-300 ease-in-out hover:scale-105"
-                  src={`${url}${mainImage.url}`}
+                  src={`${mainImage.url}`}
                   alt={categoryName}
                 />
               </Link>

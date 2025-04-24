@@ -45,7 +45,7 @@ const ProductCard = (props: ProductCardProps) => {
         <CarouselContent>
           {image.map((img) => (
             <CarouselItem key={img.id}>
-              <img src={url + img.url} alt={img.hash} />
+              <img src={img.url} alt={img.hash} />
               <div className="absolute w-full px-6 transition duration-200 opacity-0 z-30 group-hover:opacity-100 bottom-5">
                 <div className="flex justify-center gap-x-6">
                   <IconButton

@@ -16,7 +16,6 @@ interface CarouselProductPage {
 }
 
 const CarouselProduct = (props: CarouselProductPage) => {
-  const api_url = process.env.NEXT_PUBLIC_BACKEND_URL;
   const { image } = props;
 
   return (
@@ -27,11 +26,7 @@ const CarouselProduct = (props: CarouselProductPage) => {
             const { id, url } = img;
             return (
               <CarouselItem key={id}>
-                <img
-                  src={api_url + url}
-                  alt="product image"
-                  className="rounded-lg"
-                />
+                <img src={url} alt="product image" className="rounded-lg" />
               </CarouselItem>
             );
           })}
