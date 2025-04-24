@@ -17,9 +17,12 @@ import Autoplay from "embla-carousel-autoplay";
 import { Expand, ShoppingCart } from "lucide-react";
 import { IconButton } from "../atoms/iconButton";
 import useCart from "@/hooks/useCart";
+import { useState } from "react";
 
 export const FeaturedProds = () => {
   const router = useRouter();
+  const [onTouch, setOnTouch] = useState(false);
+  console.log(onTouch);
   const { result, loading }: ResponseType = useGetFeaturedProds();
   const { addItem } = useCart();
 
@@ -51,13 +54,18 @@ export const FeaturedProds = () => {
               return (
                 <CarouselItem
                   key={id}
-                  className=" md:basis-1/2 lg:basis-1/3 group"
+                  onTouchStart={() => setOnTouch(!onTouch)}
+                  className="md:basis-1/2 lg:basis-1/3 group"
                 >
                   <div className="p-1">
                     <Card className="py-4 border border-gray-200 shadow-none">
                       <CardContent className="relative flex items-center aspect-square justify-center px-6 py-2">
                         <img src={url} alt={`Image featured ${slug}`} />
-                        <div className="absolute w-full px-6 transition duration-200 opacity-0 group-hover:opacity-100 bottom-5">
+                        <div
+                          className={`absolute w-full px-6 transition duration-200 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 ${
+                            onTouch && "opacity-100"
+                          }  bottom-5`}
+                        >
                           <div className="flex justify-center gap-x-3">
                             <IconButton
                               onClick={() => router.push(`product/${slug}`)}

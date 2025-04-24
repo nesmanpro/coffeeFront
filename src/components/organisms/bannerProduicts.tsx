@@ -13,7 +13,7 @@ const BannerProducts = () => {
           PACKS DEGUSTACIÓN
         </h4>
         <p className="my-2 text-lg">
-          Descuble lo snuevos packs y explora nuevas fincas
+          Descubre los nuevos packs y explora nuevas fincas
         </p>
         <Link href="#" className={buttonVariants()}>
           Comprar
