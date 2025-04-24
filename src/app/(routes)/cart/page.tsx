@@ -10,7 +10,7 @@ import { makePaymentRequest } from "@/api/payment";
 import { formatOrderItems } from "@/lib/formatOrderItems";
 
 export default function Page() {
-  const { items, removeAll } = useCart();
+  const { items } = useCart();
 
   const prices = items.map((prod) => prod.price);
   const totalPrice = prices.reduce((total, price) => total + price, 0);
@@ -27,8 +27,9 @@ export default function Page() {
       });
       await stripe?.redirectToCheckout({
         sessionId: res.data.stripeSession.id,
+        successUrl: `${window.location.origin}/success`,
+        cancelUrl: `${window.location.origin}/cart`,
       });
-      removeAll();
     } catch (error) {
       console.log(error);
     }

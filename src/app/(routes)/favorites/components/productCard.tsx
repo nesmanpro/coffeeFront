@@ -12,6 +12,7 @@ import {
 import useCart from "@/hooks/useCart";
 import useFavorites from "@/hooks/useFavorites";
 import CustomBadge from "@/components/atoms/Badge";
+import { useState } from "react";
 
 type ProductCardProps = {
   product: productType;
@@ -20,6 +21,7 @@ type ProductCardProps = {
 const LovedProductCard = (props: ProductCardProps) => {
   const router = useRouter();
 
+  const [onTouch, setOnTouch] = useState(false);
   const { product } = props;
   const { origin, image, slug, taste, price, productName, id } = product;
 
@@ -47,9 +49,14 @@ const LovedProductCard = (props: ProductCardProps) => {
             <CarouselItem
               className="cursor-grab active:cursor-grabbing"
               key={img.id}
+              onTouchStart={() => setOnTouch(!onTouch)}
             >
               <img src={img.url} alt={productName} />
-              <div className="absolute w-full px-6 transition duration-200 opacity-0 z-30 group-hover:opacity-100 bottom-5">
+              <div
+                className={`absolute w-full px-6 transition duration-200 opacity-0 z-30 group-hover:opacity-100 ${
+                  onTouch && "opacity-100"
+                } bottom-5`}
+              >
                 <div className="flex justify-center gap-x-6">
                   <IconButton
                     onClick={() => router.push(`/product/${slug}`)}

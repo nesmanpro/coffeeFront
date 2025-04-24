@@ -12,6 +12,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import useCart from "@/hooks/useCart";
+import { useState } from "react";
 
 type ProductCardProps = {
   product: productType;
@@ -19,6 +20,7 @@ type ProductCardProps = {
 
 const ProductCard = (props: ProductCardProps) => {
   const router = useRouter();
+  const [onTouch, setOnTouch] = useState(false);
   const { product } = props;
   const { origin, image, slug, taste, price, productName } = product;
 
@@ -43,9 +45,16 @@ const ProductCard = (props: ProductCardProps) => {
       >
         <CarouselContent>
           {image.map((img) => (
-            <CarouselItem key={img.id}>
+            <CarouselItem
+              key={img.id}
+              onTouchStart={() => setOnTouch(!onTouch)}
+            >
               <img src={img.url} alt={img.hash} />
-              <div className="absolute w-full px-6 transition duration-200 opacity-0 z-30 group-hover:opacity-100 bottom-5">
+              <div
+                className={`absolute w-full px-6 transition duration-200 opacity-0 z-30 group-hover:opacity-100 ${
+                  onTouch && "opacity-100"
+                } bottom-5`}
+              >
                 <div className="flex justify-center gap-x-6">
                   <IconButton
                     onClick={() => router.push(`/product/${slug}`)}

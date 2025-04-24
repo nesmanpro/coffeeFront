@@ -1,13 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import SuccessImage from "@/components/atoms/successImage";
 import { useEffect } from "react";
 import confetti from "canvas-confetti";
+import useCart from "@/hooks/useCart";
 
 const Page = () => {
+  const { removeAll } = useCart();
+
   useEffect(() => {
     confetti();
+    removeAll();
   }, []);
 
   const router = useRouter();

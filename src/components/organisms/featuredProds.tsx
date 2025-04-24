@@ -22,7 +22,6 @@ import { useState } from "react";
 export const FeaturedProds = () => {
   const router = useRouter();
   const [onTouch, setOnTouch] = useState(false);
-  console.log(onTouch);
   const { result, loading }: ResponseType = useGetFeaturedProds();
   const { addItem } = useCart();
 
@@ -45,7 +44,7 @@ export const FeaturedProds = () => {
           }),
         ]}
       >
-        <CarouselContent className="-ml-2 md:-ml-4">
+        <CarouselContent className="-ml-2 md:-ml-4 group">
           {result !== null &&
             result.map((prod: productType) => {
               const { id, slug, taste, origin, productName, image } = prod;
@@ -55,7 +54,7 @@ export const FeaturedProds = () => {
                 <CarouselItem
                   key={id}
                   onTouchStart={() => setOnTouch(!onTouch)}
-                  className="md:basis-1/2 lg:basis-1/3 group"
+                  className="md:basis-1/2 lg:basis-1/3 "
                 >
                   <div className="p-1">
                     <Card className="py-4 border border-gray-200 shadow-none">
